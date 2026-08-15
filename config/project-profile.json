@@ -1,0 +1,27 @@
+{
+  "$schema": "../schemas/project-config.schema.json",
+  "schema_version": "1.0.0",
+  "project_id": "model-driven-pile-all-18",
+  "target": {
+    "model_name": "Model-driven-pile-all-18",
+    "job_name": "Job-5",
+    "source_cae": {
+      "filename": "driven pile.cae",
+      "size_bytes": 1262108672,
+      "sha256": "a32e7a72293fbf3e1b803d8b820965ce82e78f74a811729a613740c5c40029ac"
+    }
+  },
+  "runtime_requirements": {
+    "operating_system": "Windows 10/11 x64",
+    "external_python": "CPython >=3.10",
+    "abaqus_release": "2022",
+    "embedded_python": "2.7",
+    "filesystem": "local NTFS"
+  },
+  "safety": {
+    "staged_cae_only": true,
+    "no_overwrite": true,
+    "solver_execution_enabled": false,
+    "job_kill_enabled": false
+  }
+}

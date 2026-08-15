@@ -1,0 +1,44 @@
+{
+  "$schema": "../schemas/case-matrix.schema.json",
+  "schema_version": "1.0.0",
+  "matrix_id": "rate-soft-matrix-v1",
+  "state": "DEFINED_NOT_MATERIALIZED",
+  "invariants": [
+    "geometry",
+    "mesh",
+    "material_tables",
+    "contact",
+    "boundary_conditions",
+    "gravity",
+    "hammer_amplitude",
+    "output_requests",
+    "precision",
+    "resource_settings"
+  ],
+  "cases": [
+    {
+      "case_id": "B00",
+      "job_name": "B00_depth_base",
+      "I_RATE": 0,
+      "I_SOFT": 0
+    },
+    {
+      "case_id": "B10",
+      "job_name": "B10_rate_only",
+      "I_RATE": 1,
+      "I_SOFT": 0
+    },
+    {
+      "case_id": "B01",
+      "job_name": "B01_soft_only",
+      "I_RATE": 0,
+      "I_SOFT": 1
+    },
+    {
+      "case_id": "B11",
+      "job_name": "B11_rate_soft",
+      "I_RATE": 1,
+      "I_SOFT": 1
+    }
+  ]
+}

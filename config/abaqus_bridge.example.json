@@ -1,0 +1,26 @@
+{
+  "abaqus_release": "2022",
+  "abaqus_command": "C:\\SIMULIA\\Commands\\abq2022.bat",
+  "worker": "C:\\GitHub\\0816Abaqus\\abaqus_worker.py",
+  "workers": {
+    "summary": "C:\\GitHub\\0816Abaqus\\abaqus_worker.py",
+    "audit": "C:\\GitHub\\0816Abaqus\\automation\\cae_audit_worker.py",
+    "workspace": "C:\\GitHub\\0816Abaqus\\automation\\workspace_worker.py",
+    "odb": "C:\\GitHub\\0816Abaqus\\automation\\odb_worker.py"
+  },
+  "run_root": "C:\\AbaqusPile\\bridge-runs",
+  "allowed_cae_roots": [
+    "C:\\AbaqusPile\\source",
+    "C:\\AbaqusPile\\workspaces",
+    "C:\\AbaqusPile\\cases"
+  ],
+  "timeouts": {
+    "ping": 180,
+    "list_models": 600,
+    "model_summary": 600,
+    "deep_audit": 900
+  },
+  "hard_timeout_seconds": 900,
+  "max_response_bytes": 5242880,
+  "keep_staged_cae": false
+}

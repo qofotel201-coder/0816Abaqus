@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/project-config.schema.json",
+  "title": "Portable project profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_id",
+    "target",
+    "runtime_requirements",
+    "safety"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_name",
+        "job_name",
+        "source_cae"
+      ],
+      "properties": {
+        "model_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "job_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_cae": {
+          "type": "object",
+          "required": [
+            "filename",
+            "size_bytes",
+            "sha256"
+          ],
+          "properties": {
+            "filename": {
+              "type": "string",
+              "minLength": 1
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "runtime_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operating_system",
+        "external_python",
+        "abaqus_release",
+        "embedded_python",
+        "filesystem"
+      ],
+      "properties": {
+        "operating_system": {
+          "const": "Windows 10/11 x64"
+        },
+        "external_python": {
+          "const": "CPython >=3.10"
+        },
+        "abaqus_release": {
+          "const": "2022"
+        },
+        "embedded_python": {
+          "const": "2.7"
+        },
+        "filesystem": {
+          "const": "local NTFS"
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "staged_cae_only",
+        "no_overwrite",
+        "solver_execution_enabled",
+        "job_kill_enabled"
+      ],
+      "properties": {
+        "staged_cae_only": {
+          "const": true
+        },
+        "no_overwrite": {
+          "const": true
+        },
+        "solver_execution_enabled": {
+          "const": false
+        },
+        "job_kill_enabled": {
+          "const": false
+        }
+      }
+    }
+  }
+}

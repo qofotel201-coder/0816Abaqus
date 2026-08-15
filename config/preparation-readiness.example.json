@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/preparation-readiness.schema.json",
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-16T00:00:00+08:00",
+  "overall_status": "NOT_READY",
+  "counts": {
+    "PASS": 0,
+    "WARN": 0,
+    "FAIL": 0,
+    "BLOCKED": 6
+  },
+  "checks": [
+    {
+      "id": "INPUT_HASHES",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Run bootstrap.py with the private CAE and user subroutine."
+    },
+    {
+      "id": "PYTHON_TESTS",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Run the portable unit test suite on this computer."
+    },
+    {
+      "id": "ABAQUS_CONNECTION",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Run the Phase 0 reproduction command."
+    },
+    {
+      "id": "MODEL_FINGERPRINT",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Complete the staged-copy deep audit."
+    },
+    {
+      "id": "RESOURCE_PREFLIGHT",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Generate a fresh machine resource report."
+    },
+    {
+      "id": "DATA_CHECK",
+      "required": true,
+      "status": "BLOCKED",
+      "reason": "Not implemented or authorized in this repository release."
+    }
+  ],
+  "solver_submitted": false
+}
