@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/output-contract.schema.json",
+  "schema_version": "1.0.0",
+  "coordinate_system": {
+    "vertical_axis": "Z",
+    "positive_direction": "UP"
+  },
+  "penetration_depth": {
+    "formula": "d_m=-U3_sensor_m",
+    "unit": "m"
+  },
+  "components": [
+    {
+      "name": "Qouter",
+      "variable": "CFT3",
+      "region_role": "pile_outer_surface",
+      "unit": "N"
+    },
+    {
+      "name": "Qinner",
+      "variable": "CFT3",
+      "region_role": "pile_inner_surface",
+      "unit": "N"
+    },
+    {
+      "name": "Qtoe",
+      "variable": "CFT3",
+      "region_role": "pile_toe_surface",
+      "unit": "N"
+    }
+  ],
+  "comparison": {
+    "alignment": "COMMON_PENETRATION_DEPTH",
+    "metrics": [
+      "DR",
+      "DW",
+      "RW"
+    ],
+    "customer_limit": 0.4
+  }
+}

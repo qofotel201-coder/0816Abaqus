@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/external-data-manifest.schema.json",
+  "title": "External data manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_id",
+    "distribution_policy",
+    "inputs",
+    "repository_sources"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "distribution_policy": {
+      "type": "object",
+      "required": [
+        "binary_inputs_in_git",
+        "reason"
+      ],
+      "properties": {
+        "binary_inputs_in_git": {
+          "const": false
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/externalInput"
+      }
+    },
+    "repository_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repositorySource"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "externalInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_id",
+        "filename",
+        "required",
+        "included_in_repository",
+        "size_bytes",
+        "sha256",
+        "note"
+      ],
+      "properties": {
+        "logical_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "included_in_repository": {
+          "const": false
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "repositorySource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_id",
+        "path",
+        "size_bytes",
+        "sha256",
+        "approval"
+      ],
+      "properties": {
+        "logical_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "approval": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

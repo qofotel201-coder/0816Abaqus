@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/external-data-manifest.schema.json",
+  "schema_version": "1.0.0",
+  "project_id": "model-driven-pile-all-18",
+  "distribution_policy": {
+    "binary_inputs_in_git": false,
+    "reason": "Large customer/model inputs and third-party references must be supplied separately and verified by hash."
+  },
+  "inputs": [
+    {
+      "logical_id": "source_archive",
+      "filename": "driven pile.rar",
+      "required": false,
+      "included_in_repository": false,
+      "size_bytes": 541029107,
+      "sha256": "79cd1a86152ebcacb7b53b891f82a8e25f9d8427137964fc2c30bb261a5e7adb",
+      "note": "Optional original archive; the extracted CAE is the required runtime input."
+    },
+    {
+      "logical_id": "frozen_source_cae",
+      "filename": "driven pile.cae",
+      "required": true,
+      "included_in_repository": false,
+      "size_bytes": 1262108672,
+      "sha256": "a32e7a72293fbf3e1b803d8b820965ce82e78f74a811729a613740c5c40029ac",
+      "note": "Never open this frozen file directly in Abaqus; the bridge creates a request-owned staged copy."
+    },
+    {
+      "logical_id": "phase0_user_subroutine",
+      "filename": "Combined_VUAMP_VUSDFLD.for",
+      "required": true,
+      "included_in_repository": false,
+      "size_bytes": 17438,
+      "sha256": "4889db06c2cf1f477cecaa7baf0ceabf6b5e8279f903fc080cf9d69edf3cfd43",
+      "note": "Supply an authorized private copy. Static review only; not approved for solver execution."
+    }
+  ],
+  "repository_sources": []
+}

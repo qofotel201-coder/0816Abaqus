@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/automation-config.schema.json",
+  "title": "Portable Abaqus automation configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "allowed_source_roots",
+    "allowed_subroutine_roots",
+    "workspace_root",
+    "allow_job_kill",
+    "solver_execution_enabled"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "abaqus-automation/1.0"
+    },
+    "allowed_source_roots": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/localPath"
+      }
+    },
+    "allowed_subroutine_roots": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/localPath"
+      }
+    },
+    "workspace_root": {
+      "$ref": "#/$defs/localPath"
+    },
+    "plan_ttl_seconds": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 86400
+    },
+    "max_subroutine_bytes": {
+      "type": "integer",
+      "minimum": 1024
+    },
+    "artifact_hash_limit_bytes": {
+      "type": "integer",
+      "minimum": 1024
+    },
+    "allow_job_kill": {
+      "type": "boolean"
+    },
+    "solver_execution_enabled": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "localPath": {
+      "type": "string",
+      "minLength": 3,
+      "not": {
+        "pattern": "^(?:\\\\\\\\|//)"
+      }
+    }
+  }
+}

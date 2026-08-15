@@ -1,0 +1,17 @@
+{
+  "schema_version": "abaqus-automation/1.0",
+  "allowed_source_roots": [
+    "C:\\AbaqusPile\\source",
+    "C:\\AbaqusPile\\results",
+    "C:\\AbaqusPile\\cases"
+  ],
+  "allowed_subroutine_roots": [
+    "C:\\AbaqusPile\\approved_subroutines"
+  ],
+  "workspace_root": "C:\\AbaqusPile\\workspaces",
+  "plan_ttl_seconds": 1800,
+  "max_subroutine_bytes": 10485760,
+  "artifact_hash_limit_bytes": 268435456,
+  "allow_job_kill": false,
+  "solver_execution_enabled": false
+}

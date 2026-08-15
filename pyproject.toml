@@ -1,0 +1,13 @@
+[project]
+name = "abaqus-safe-automation"
+version = "0.1.0"
+description = "Safe external CPython orchestration for an Abaqus 2022 CEL project"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["jsonschema==4.19.2"]
+
+[tool.coverage.run]
+branch = true
+source = ["automation"]

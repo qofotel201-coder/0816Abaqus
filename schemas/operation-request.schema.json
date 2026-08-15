@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/operation-request.schema.json",
+  "title": "Allowlisted automation request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "jsonrpc",
+    "id",
+    "method",
+    "params"
+  ],
+  "properties": {
+    "jsonrpc": {
+      "const": "2.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "method": {
+      "enum": [
+        "ping",
+        "list_models",
+        "model_summary",
+        "system.capabilities",
+        "source.manifest",
+        "subroutine.validate",
+        "workspace.plan",
+        "workspace.plan_create",
+        "workspace.create",
+        "workspace.inspect",
+        "workspace.inspect_cae",
+        "model.deep_audit",
+        "model.clone.commit",
+        "job.bind_subroutine.commit",
+        "job.write_input",
+        "job.status",
+        "job.artifacts",
+        "job.kill.plan",
+        "job.kill.commit",
+        "job.data_check",
+        "job.submit",
+        "inventory",
+        "extract_history"
+      ]
+    },
+    "params": {
+      "type": "object"
+    }
+  }
+}

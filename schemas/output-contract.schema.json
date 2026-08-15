@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/output-contract.schema.json",
+  "title": "Resistance output and comparison contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "coordinate_system",
+    "penetration_depth",
+    "components",
+    "comparison"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "coordinate_system": {
+      "type": "object",
+      "required": [
+        "vertical_axis",
+        "positive_direction"
+      ],
+      "properties": {
+        "vertical_axis": {
+          "enum": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        "positive_direction": {
+          "enum": [
+            "UP",
+            "DOWN"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "penetration_depth": {
+      "type": "object",
+      "required": [
+        "formula",
+        "unit"
+      ],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "const": "m"
+        }
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "variable",
+          "region_role",
+          "unit"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "variable": {
+            "type": "string"
+          },
+          "region_role": {
+            "type": "string"
+          },
+          "unit": {
+            "const": "N"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": [
+        "alignment",
+        "metrics",
+        "customer_limit"
+      ],
+      "properties": {
+        "alignment": {
+          "const": "COMMON_PENETRATION_DEPTH"
+        },
+        "metrics": {
+          "type": "array",
+          "const": [
+            "DR",
+            "DW",
+            "RW"
+          ]
+        },
+        "customer_limit": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

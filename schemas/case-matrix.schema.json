@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./schemas/case-matrix.schema.json",
+  "title": "Rate and softening comparison matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "matrix_id",
+    "state",
+    "invariants",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "matrix_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "DEFINED_NOT_MATERIALIZED",
+        "MATERIALIZED",
+        "COMPLETED"
+      ]
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/B00"
+        },
+        {
+          "$ref": "#/$defs/B10"
+        },
+        {
+          "$ref": "#/$defs/B01"
+        },
+        {
+          "$ref": "#/$defs/B11"
+        }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "baseCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "job_name",
+        "I_RATE",
+        "I_SOFT"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string"
+        },
+        "job_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,79}$"
+        },
+        "I_RATE": {
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "I_SOFT": {
+          "enum": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "B00": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseCase"
+        },
+        {
+          "properties": {
+            "case_id": {
+              "const": "B00"
+            },
+            "I_RATE": {
+              "const": 0
+            },
+            "I_SOFT": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "B10": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseCase"
+        },
+        {
+          "properties": {
+            "case_id": {
+              "const": "B10"
+            },
+            "I_RATE": {
+              "const": 1
+            },
+            "I_SOFT": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "B01": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseCase"
+        },
+        {
+          "properties": {
+            "case_id": {
+              "const": "B01"
+            },
+            "I_RATE": {
+              "const": 0
+            },
+            "I_SOFT": {
+              "const": 1
+            }
+          }
+        }
+      ]
+    },
+    "B11": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseCase"
+        },
+        {
+          "properties": {
+            "case_id": {
+              "const": "B11"
+            },
+            "I_RATE": {
+              "const": 1
+            },
+            "I_SOFT": {
+              "const": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}
